@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mobile/Web Integration Demo</title>
+        <link href="base.css" rel="stylesheet" type="text/css" /> 
+    </head>
+    <body>
+        
+        <ul id="programList" data-bind="foreach: filteredProgramList">
+            <li class="program" data-bind="click: $root.showDetails">
+                <a class="reminder" href="#" data-bind="click: $root.setReminder, clickBubble: false"></a>
+                <div class="title" data-bind="text: title"></div>
+                <div class="info">
+                    <span class="episodeTitle" data-bind='visible: episodeTitle, text: "\"" + episodeTitle() + "\""'></span><span data-bind="visible: episodeTitle() && genre()">, </span>
+                    <span class="genre" data-bind="text: genre"></span>
+                </div>
+                <div class="description" data-bind="text: description, visible: $root.showDescriptions()"></div>
+            </li>
+        </ul>
+
+        <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="knockout-2.1.0.js"></script>
+        <script type="text/javascript" src="knockout.mapping-latest.js"></script>
+        <script type="text/javascript" src="ProgramListAPI.js"></script>
+        <script type="text/javascript">
+
+            var api = null;
+
+            $(document).ready(function() {
+
+                var model = {
+                    programList: [
+                        { title: "Hawaii Five-0", episodeTitle: "Kupale", genre: "Drama", description: "The Five-0 team investigates the mysterious murder of a man dressed as a Hawaiian NaKoa warrior who was found in the jungle near the site of a historical war." },
+                        { title: "Mike & Molly", episodeTitle: "The Dress", genre: "Comedy", description: "Molly starts to have a meltdown when her dress doesn't fit three weeks before the big day, so in hopes of losing the weight, Molly's diet goes into overdrive." },
+                        { title: "The Simpsons", episodeTitle: "Homer and Lisa Exchange Cross Words", genre: "Comedy", description: "Lisa discovers her talent for doing crossword puzzles and enters a citywide contest; short on cash, Homer discovers an underground betting ring and bets against Lisa, then needs help making it up to her when she finds out about his betrayal." },
+                        { title: "The Big Bang Theory", episodeTitle: "The Desperation Emanation", genre: "Comedy", description: "When Leonard realizes that he is the only one in the group without a girlfriend, he goes to Wolowitz and Bernadette for help; after meeting Amy's mother, Sheldon thinks he may be in a relationship, so he tries to get rid of his girlfriend." },
+                        { title: "Hell's Kitchen", episodeTitle: "6 Chefs Compete", genre: "Reality", description: "After receiving their black jackets, the final six realize there is no time for celebration after learning that Gordon plans to bring back former contestants to challenge the current participants on the upcoming dinner service." },
+                        { title: "The Closer", episodeTitle: "Armed Response", genre: "Drama", description: "Brenda encounters difficulties during an investigation when the only potential witnesses are two guests in a home that is nearby the murder scene of a decorated war veteran; Raydor and Pope manage to find the leak in the department." },
+                        { title: "Air Jaws Apocalypse", episodeTitle: null, genre: "Nature", description: "With a new camera designed for hair-raising shots, shark expert Chris Fallows and natural history producer Jeff Kurr head to Seal Island, South Africa, to study great white sharks, including a large and powerful 14-foot shark named Colossus." },
+                        { title: "Sharkzilla", episodeTitle: null, genre: "Nature", description: "As Shark Week celebrates its 25th anniversary, experts take an in-depth look at the megalodon, which is the world's largest shark, and after a team builds a replica of the 52-foot-long extinct shark, the crew from \"MythBusters\" puts it to the test." },
+                        { title: "Call of the Wildman", episodeTitle: "Trailer Park Stink Bomb", genre: "Nature", description: "The Turtleman has to deal with a pesky beaver that drags the Turtle team through the mud, and with their dam that threatens a farm with erosion and flooding; local trailer park residents try to escape a putrid odor that turns out to be a skunk." },
+                        { title: "Chasing Classic Cars", episodeTitle: "Shelby vs. Ferrari", genre: "Reality", description: "Wayne brings a 1969 V-12 Ferrari 365 GTC and a 1966 Shelby Mustang GT350 fastback to Monterey, California for an auction and unwinds at an exclusive party for wealthy car aficionados before spending the next two days at the sale." }
+                    ],
+                    showDescriptions: false
+                };
+
+                api = new ProgramListAPI($, ko);
+
+                api.init("#programList", model);
+
+            });
+
+        </script>
+    </body>
+</html>

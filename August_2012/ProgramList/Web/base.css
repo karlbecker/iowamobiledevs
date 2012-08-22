@@ -1,0 +1,26 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+}
+
+ul#programList { margin: 0px;padding: 0px; }
+
+#programList .program { 
+    border: solid 1px #999; border-left: none; border-right: none;padding: 4px;color: #fff;position: relative;min-height: 30px;
+    background-image: linear-gradient(top, rgb(43,94,122) 29%, rgb(76,154,196) 65%);
+    background-image: -o-linear-gradient(top, rgb(43,94,122) 29%, rgb(76,154,196) 65%);
+    background-image: -moz-linear-gradient(top, rgb(43,94,122) 29%, rgb(76,154,196) 65%);
+    background-image: -webkit-linear-gradient(top, rgb(43,94,122) 29%, rgb(76,154,196) 65%);
+    background-image: -ms-linear-gradient(top, rgb(43,94,122) 29%, rgb(76,154,196) 65%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.29, rgb(43,94,122)), color-stop(0.65, rgb(76,154,196))); 
+
+}
+
+#programList .program:first-child { border-top: none; }
+#programList .program:last-child { border-bottom: none; }
+#programList .program .title { font-weight: bolder; font-size: 1.1em; text-shadow: 2px 2px 2px rgba(70, 72, 70, 0.62); }
+#programList .program .info { font-size: 0.9em; }
+#programList .program .description { background-color: #fff; font-size: 0.9em; border: solid 1px #ccc; border-radius: 4px; padding: 4px;margin-top: 4px;color: #555;  }
+#programList .program .reminder { width: 24px; height: 24px;background-image: url(reminder.png); float: right; margin: 3px; }
